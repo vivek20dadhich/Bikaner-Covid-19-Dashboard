@@ -6,7 +6,9 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
 df = pd.read_csv('Bikaner-covid-cases-data.csv')
+
 st.set_page_config(layout="wide")
+
 st.title("Covid-19 Dashboard For Bikaner")
 st.markdown('This dashboard visualizes the Covid-19 Per Day Cases and Recoveries in Bikaner')
 
@@ -16,14 +18,12 @@ st.sidebar.markdown('Per day cases data is from 02/Apr/2021 Recoveries data is f
 col1,col2 = st.beta_columns([3,1])
 with col1:
     
-    COLORS_MAPPER = {
-        "Cases": "#38BEC9",
-        "Recoveries": "#D64545"
-    }
-
     layout = go.Layout(
         #title="",
         plot_bgcolor="#FFF",  # Sets background color to white
+        autosize=False,
+        width=850,
+        height=500,
         hovermode="x",
         hoverdistance=100, # Distance to show hover label of data point
         spikedistance=1000, # Distance to show spike
@@ -46,18 +46,27 @@ with col1:
     )
 
     fig = go.Figure(layout=layout)
+    
+    config={"displayModeBar": False, "showTips": False, 'scrollZoom': False}
+    
     fig.add_trace(go.Scatter(x=df['Date'], y=df['Cases'],mode='markers+lines',name='+ve cases',
-                             marker=dict(color='rgb(255, 56, 56)',size=4),line=dict(color='rgb(111, 231, 219)',width=2)))
-    fig.add_trace(go.Scatter(x=df['Date'], y=df['Recoveries'],mode='lines',name='Recover',
-                             marker=dict(color='green',size=4),line=dict(color='rgb(211, 231, 119)',width=2)))
+                             marker=dict(color='rgb(255, 56, 56)',size=4),line=dict(color='lightskyblue',width=2)))
+    
+    fig.add_trace(go.Scatter(x=df['Date'], y=df['Recoveries'],mode='markers+lines',name='Recover',
+                             marker=dict(color='green',size=4,opacity=0.5),line=dict(color='rgba(211, 231, 119,0.8)',width=2)))
 
-    st.plotly_chart(fig)
+    #fig.show(config={"displayModeBar": False, "showTips": False})# Remove floating menu and unnecesary dialog box
+    
+    st.plotly_chart(fig,config=config)
     
 with col2:
-    st.button("Current Active Cases - 8694")
-    st.button("Samples taken today - 1155")
+    st.button("Active Cases - 8230")
+    st.button("Samples taken - 2581")
     my_expander = st.beta_expander("More")
     with my_expander:
-        st.markdown("Last updated on 10th May at 9pm")
+        
+        st.write("Last updated on 11th May at 9pm")
+        st.write("Data source - Daily report released from CMHO office Bikaner")
     
+
 
