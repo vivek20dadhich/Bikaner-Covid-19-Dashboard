@@ -5,4 +5,4 @@
 -Also displays the Current active cases in Bikaner, Raj.
 
 ->Dashboard Screenshot
-![Screenshot (372)](https://user-images.githubusercontent.com/22216569/117997316-7bc9ff00-b360-11eb-96be-4b6035add7b2.png)
+![Screenshot (377)](https://user-images.githubusercontent.com/22216569/118272672-97f4aa00-b4e0-11eb-8f06-c33d594d815b.png)
