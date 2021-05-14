@@ -20,7 +20,7 @@ with col1:
     
     layout = go.Layout(
         #title="",
-        plot_bgcolor="#FFF",  # Sets background color to white
+        plot_bgcolor="#F2F2FF",  # Sets background color to white
         autosize=False,
         width=850,
         height=500,
