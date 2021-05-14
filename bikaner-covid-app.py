@@ -50,10 +50,10 @@ with col1:
     config={"displayModeBar": False, "showTips": False, 'scrollZoom': False}
     
     fig.add_trace(go.Scatter(x=df['Date'], y=df['Cases'],mode='markers+lines',name='+ve cases',
-                             marker=dict(color='rgb(255, 56, 56)',size=4),line=dict(color='lightskyblue',width=2)))
+                             marker=dict(color='rgb(255, 56, 56)',size=4),line=dict(color='lightskyblue',width=2.5)))
     
     fig.add_trace(go.Scatter(x=df['Date'], y=df['Recoveries'],mode='markers+lines',name='Recover',
-                             marker=dict(color='green',size=4,opacity=0.5),line=dict(color='rgba(211, 231, 119,0.8)',width=2)))
+                             marker=dict(color='green',size=4,opacity=0.5),line=dict(color='rgba(211, 231, 119,0.8)',width=2.5)))
 
     #fig.show(config={"displayModeBar": False, "showTips": False})# Remove floating menu and unnecesary dialog box
     
