@@ -61,11 +61,11 @@ with col1:
     
 with col2:
     st.button("Active Cases - 7839")
-    st.button("Samples taken today - 2209")
+    st.button("Samples taken today - 2021")
     my_expander = st.beta_expander("More")
     with my_expander:
         
-        st.write("Last updated on 13th May at 9pm")
+        st.write("Last updated on 14th May at 9pm")
         st.write("Data source - Daily report released from CMHO office Bikaner")
     
 
