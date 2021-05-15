@@ -61,7 +61,7 @@ with col1:
     
 with col2:
     st.button("Active Cases - 7296")
-    st.button("Samples taken today - 129")
+    st.button("Samples taken today - 1129")
     my_expander = st.beta_expander("More")
     with my_expander:
         
