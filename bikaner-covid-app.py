@@ -15,7 +15,7 @@ st.subheader('This dashboard visualizes the Covid-19 Per Day Cases and Recoverie
 #st.sidebar.header('Last updated on 10th May at 9pm')
 st.sidebar.markdown('Per day cases data is from 02/Apr/2021 Recoveries data is from 30/Apr/2021')
 
-col1,col2 = st.beta_columns([3,1])
+col1,col2 = st.beta_columns([2,2])
 with col1:
     
     layout = go.Layout(
@@ -75,7 +75,7 @@ with col2:
     my_expander = st.beta_expander("More")
     with my_expander:
         st.info("Last updated on 18th May at 8pm")
-        st.write("Data source - Daily report released from CMHO office Bikaner")
+        st.info("Data source - Daily report released from CMHO office Bikaner")
     
 
 
