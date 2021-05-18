@@ -62,7 +62,7 @@ with col1:
 with col2:
     
     if st.button('Samples taken'):
-        st.button("Current Active Cases - 5921")
+        st.write("Current Active Cases - 5921")
     if st.button('Samples taken'):
         st.write("Samples taken on 18th May - 2606")
         st.write("Samples taken on 17th May - 1115")
