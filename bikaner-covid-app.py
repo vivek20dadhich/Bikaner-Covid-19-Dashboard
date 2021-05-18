@@ -74,7 +74,7 @@ with col2:
         
     my_expander = st.beta_expander("More")
     with my_expander:
-        st.write("Last updated on 18th May at 8pm")
+        st.info("Last updated on 18th May at 8pm")
         st.write("Data source - Daily report released from CMHO office Bikaner")
     
 
