@@ -14,6 +14,7 @@ st.write('This dashboard visualizes the Covid-19 Per Day Cases and Recoveries in
 
 #st.sidebar.header('Last updated on 10th May at 9pm')
 st.sidebar.info('Per day cases data is from 02/Apr/2021 Recoveries data is from 30/Apr/2021')
+st.sidebar.info('Per day Recoveries data is from 30/Apr/2021')
 
 col1,col2 = st.beta_columns([4,1.5])
 with col1:
