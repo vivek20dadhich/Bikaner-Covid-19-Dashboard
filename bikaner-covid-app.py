@@ -62,11 +62,13 @@ with col1:
 with col2:
     st.button("Active Cases - 5921")
     st.button("Samples taken today - 2606")
-    st.button("Percent positive on 18th May - 22.98")
+    if st.button('Percent positive'):
+        st.write("Percent positive on 18th May - 22.98")
+        st.write("Percent positive on 17th May - 20.98")
     my_expander = st.beta_expander("More")
     with my_expander:
         
-        st.write("Percent positive on 17th May - 20.98")
+        
         st.write("Last updated on 18th May at 8pm")
         st.write("Data source - Daily report released from CMHO office Bikaner")
     
