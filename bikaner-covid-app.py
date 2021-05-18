@@ -60,13 +60,14 @@ with col1:
     st.plotly_chart(fig,config=config)
     
 with col2:
-    st.button("Active Cases - 6056")
-    st.button("Samples taken today - 1115")
-    st.button("Percent positive - 20.98")
+    st.button("Active Cases - 5921")
+    st.button("Samples taken today - 2606")
+    st.button("Percent positive on 18th May - 22.98")
     my_expander = st.beta_expander("More")
     with my_expander:
         
-        st.write("Last updated on 17th May at 9pm")
+        st.write("Percent positive on 17th May - 20.98")
+        st.write("Last updated on 18th May at 8pm")
         st.write("Data source - Daily report released from CMHO office Bikaner")
     
 
