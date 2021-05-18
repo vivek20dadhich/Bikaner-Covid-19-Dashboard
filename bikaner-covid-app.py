@@ -10,7 +10,7 @@ df = pd.read_csv('Bikaner-covid-cases-data.csv')
 st.set_page_config(layout="wide")
 
 st.title("Covid-19 Dashboard For Bikaner")
-st.success('This dashboard visualizes the Covid-19 Per Day Cases and Recoveries in Bikaner')
+st.write('This dashboard visualizes the Covid-19 Per Day Cases and Recoveries in Bikaner')
 
 #st.sidebar.header('Last updated on 10th May at 9pm')
 st.sidebar.info('Per day cases data is from 02/Apr/2021')
