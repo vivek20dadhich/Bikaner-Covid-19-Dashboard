@@ -71,7 +71,7 @@ with col2:
         st.write("Samples taken on 17th May - 1115")
         st.write("Samples taken on 16th May - 2380")
     if st.button('Percent positive'):
-        st.write("Percent positive on 19th May - 18.75")
+        st.write("Percent positive on 20th May - 18.75")
         st.write("Percent positive on 19th May - 22.65")
         st.write("Percent positive on 18th May - 22.98")
         st.write("Percent positive on 17th May - 20.98")
@@ -79,8 +79,9 @@ with col2:
         
     my_expander = st.beta_expander("More")
     with my_expander:
-        st.info("Last updated on 20th May at 9pm")
-        st.markdown("Data source - Daily report released from CMHO office Bikaner")
+        st.info("Last updated on" 
+        st.write("20th May at 9pm")
+        st.write("Data source - Daily report released from CMHO office Bikaner")
     
 
 
