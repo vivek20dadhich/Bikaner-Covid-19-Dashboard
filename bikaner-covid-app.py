@@ -80,9 +80,9 @@ with col2:
     my_expander = st.beta_expander("More")
     with my_expander:
         if st.button('Last updated on'):
-            st.write("20th May at 9pm")
+            st.info("20th May at 9pm")
         if st.button('Data source'):
-            st.write("Daily report released from CMHO office Bikaner")
+            st.info("Daily report released from CMHO office Bikaner")
         
     
 
