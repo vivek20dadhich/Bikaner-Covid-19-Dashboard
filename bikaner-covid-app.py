@@ -63,19 +63,21 @@ with col1:
 with col2:
     
     if st.button('Active Cases'):
-        st.write("Current Active Cases - 5921")
+        st.write("Current Active Cases - 5531")
     if st.button('Samples taken'):
+        st.write("Samples taken on 19th May - 2000")
         st.write("Samples taken on 18th May - 2606")
         st.write("Samples taken on 17th May - 1115")
         st.write("Samples taken on 16th May - 2380")
     if st.button('Percent positive'):
+        st.write("Percent positive on 19th May - 22.65")
         st.write("Percent positive on 18th May - 22.98")
         st.write("Percent positive on 17th May - 20.98")
         st.write("Percent positive on 16th May - 24.74")
         
     my_expander = st.beta_expander("More")
     with my_expander:
-        st.info("Last updated on 18th May at 8pm")
+        st.info("Last updated on 19th May at 8pm")
         st.info("Data source - Daily report released from CMHO office Bikaner")
     
 
