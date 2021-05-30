@@ -1,98 +1,146 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
 import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
+import os
+import time
+import stat
 
 df = pd.read_csv('Bikaner-covid-cases-data.csv')
-
+blankIndex=[''] * len(df)
+df.index=blankIndex
 st.set_page_config(layout="wide")
 
-st.title("Covid-19 Dashboard For Bikaner")
-st.write('This dashboard visualizes the Covid-19 Per Day Cases and Recoveries in Bikaner')
+st.markdown("<h1 style='text-align:left; color: stratos;'>Covid-19 Dashboard For Bikaner </h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align:left; color: stratos;'>This dashboard visualizes the Covid-19 Per Day Cases and Recoveries in Bikaner</p>", unsafe_allow_html=True)
 
-#st.sidebar.header('Last updated on 10th May at 9pm')
 st.sidebar.info('Per day cases data is from 02/Apr/2021')
 st.sidebar.info('Per day Recoveries data is from 30/Apr/2021')
 
-col1,col2 = st.beta_columns([4,1.5])
-with col1:
+def cases():
+    st.markdown(int(df["Active Cases"].iloc[-1]))
+
+def samp():
+    st.table(pd.DataFrame({'Date':df["Date"].iloc[-3:], 'Samples Taken':df["Samples Taken"].iloc[-3:]}))
+
+def update():
+    fileStatsObj = os.stat ("C:/Users/Vivek/Desktop/Bikaner-Covid-19-Dashboard-main/Bikaner-covid-cases-data.csv")
+    modificationTime = time.ctime(fileStatsObj[stat.ST_MTIME])
+    st.markdown(modificationTime)
+
+def data():
+    st.markdown("Daily report released from CMHO office Bikaner")
     
+
+def bar():
+    #create trace1
+    trace1 = go.Bar(
+                    x = df['Date'],
+                    y = df['Cases'],
+                    name = "+ve Cases",
+                    marker = dict(color = '#729ECE',
+                                 line=dict(color='rgb(0,0,0)',width=1)))
+    # create trace2 
+    trace2 = go.Bar(
+                    x = df['Date'],
+                    y = df['Recoveries'],
+                    name = "Recover",
+                    marker = dict(color = '#98DF8A',
+                                  line=dict(color='rgb(0,0,0)',width=1)))
+    data4 = [trace1, trace2]
     layout = go.Layout(
-        #title="",
-        plot_bgcolor="#F2F2FF",  # Sets background color to white
-        autosize=False,
-        width=850,
-        height=500,
-        hovermode="x",
-        hoverdistance=100, # Distance to show hover label of data point
-        spikedistance=1000, # Distance to show spike
-        xaxis=dict(
-            title="Date",
-            linecolor="black",  # Sets color of X-axis line
-            showgrid=False,  # Removes X-axis grid lines
-            showspikes=True, # Show spike line for X-axis
-            # Format spike
-            spikethickness=2,
-            spikedash="dot",
-            spikecolor="#999999",
-            spikemode="across",
-        ),
-        yaxis=dict(
-            title="Cases/Recover",  
-            linecolor="black",  # Sets color of Y-axis line
-            showgrid=False,  # Removes Y-axis grid lines    
-        )
-    )
+                    plot_bgcolor="#F2F2FF",  # Sets background color to white
+                    autosize=False,
+                    width=950,
+                    height=450,
+                    hovermode="x",
+                    barmode = "relative",
+                    xaxis_tickangle=-90,
+                    bargap=0.16, # gap between bars of adjacent location coordinates.
+                    bargroupgap=0.3, # gap between bars of the same location coordinate.
+                    hoverdistance=200, # Distance to show hover label of data point
+            )
+    #layout = go.Layout(barmode = "group")
+    fig = go.Figure(data=data4, layout=layout)
+
+    config={"displayModeBar": False, "showTips": False, 'scrollZoom': False}
+    st.plotly_chart(fig,config=config)
+
+
+def scat():
+    layout = go.Layout(
+                plot_bgcolor="#F2F2FF", 
+                autosize=False,
+                width=900,
+                height=450,
+                hovermode="x",
+                hoverdistance=100, # Distance to show hover label of data point
+                spikedistance=1000, # Distance to show spike
+                xaxis=dict(
+                    title="Date",
+                    linecolor="black",  # Sets color of X-axis line
+                    showgrid=False,  # Removes X-axis grid lines
+                    showspikes=True, # Show spike line for X-axis
+                    # Format spike
+                    spikethickness=2,
+                    spikedash="dot",
+                    spikecolor="#999999",
+                    spikemode="across",
+                ),
+                yaxis=dict(
+                    title="Cases/Recover",  
+                    linecolor="black",  # Sets color of Y-axis line
+                    showgrid=False,  # Removes Y-axis grid lines    
+                )
+            )
 
     fig = go.Figure(layout=layout)
     
     config={"displayModeBar": False, "showTips": False, 'scrollZoom': False}
     
     fig.add_trace(go.Scatter(x=df['Date'], y=df['Cases'],mode='markers+lines',name='+ve cases',
-                             marker=dict(color='rgb(255, 56, 56)',size=4),line=dict(color='lightskyblue',width=2.5)))
+                             marker=dict(color='#CE5C5C',size=4),line=dict(color='#729ECE',width=2.2)))
     
     fig.add_trace(go.Scatter(x=df['Date'], y=df['Recoveries'],mode='markers+lines',name='Recover',
-                             marker=dict(color='green',size=4,opacity=0.5),line=dict(color='rgba(211, 231, 119,0.8)',width=2.5)))
-
-    #fig.show(config={"displayModeBar": False, "showTips": False})# Remove floating menu and unnecesary dialog box
+                             marker=dict(color='#008081',size=4,opacity=0.5),line=dict(color='#98DF8A',width=2.2)))
     
     st.plotly_chart(fig,config=config)
-    
-with col2:
-    
-    if st.button('Active Cases'):
-        st.info("Current Active Cases - 4042")
-    if st.button('Samples taken'):
-        st.write("Samples taken on 25th May - 1834")
-        st.write("Samples taken on 24th May - 996")
-        st.write("Samples taken on 23rd May - 1665")
-        st.write("Samples taken on 22nd May - 1902")
-        st.write("Samples taken on 21st May - 1057")
-        st.write("Samples taken on 20th May - 1770")
-        st.write("Samples taken on 19th May - 2000")
-        st.write("Samples taken on 18th May - 2606")
-        st.write("Samples taken on 17th May - 1115")
-        st.write("Samples taken on 16th May - 2380")
-    if st.button('Percent positive'):
-        st.write("Percent positive on 25th May - 12.70")
-        st.write("Percent positive on 24th May - 15.36")
-        st.write("Percent positive on 23rd May - 14.47")
-        st.write("Percent positive on 22nd May - 17.19")
-        st.write("Percent positive on 21st May - 19.39")
-        st.write("Percent positive on 20th May - 18.75")
-        st.write("Percent positive on 19th May - 22.65")
-        st.write("Percent positive on 18th May - 22.98")
-        st.write("Percent positive on 17th May - 20.98")
-        st.write("Percent positive on 16th May - 24.74")
+
+
+
+
+col1,col2 = st.beta_columns([6.5,2])
+
+with col1:
+    plot_type = st.radio("Select the type of plot",('Bar', 'Line and Scatter Plot'))
+
+    if plot_type == 'Bar':
+        bar()
+    if plot_type == 'Line and Scatter Plot':
+        scat()
         
+with col2:
+    if st.button('Current Active Cases'):
+        cases()
+
+    if st.button('Samples taken'):
+        samp()
+
     my_expander = st.beta_expander("More")
     with my_expander:
-        if st.button('Last updated on'):
-            st.info("25th May at 9pm")
-        if st.button('Data source'):
-            st.info("Daily report released from CMHO office Bikaner")
+        if st.caption('Last updated on - '):
+            update()
+        if st.caption('Data source - '):
+            data()
+        
+
+
+
+
+
         
     
 
