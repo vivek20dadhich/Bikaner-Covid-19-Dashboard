@@ -27,9 +27,9 @@ def samp():
     st.table(pd.DataFrame({'Date':df["Date"].iloc[-3:], 'Samples Taken':df["Samples Taken"].iloc[-3:]}))
 
 def update():
-    fileStatsObj = os.stat ("https://github.com/vivek20dadhich/Bikaner-Covid-19-Dashboard/blob/main/Bikaner-covid-cases-data.csv")
-    modificationTime = time.ctime(fileStatsObj[stat.ST_MTIME])
-    st.markdown(modificationTime)
+    #fileStatsObj = os.stat ("https://github.com/vivek20dadhich/Bikaner-Covid-19-Dashboard/blob/main/Bikaner-covid-cases-data.csv")
+    #modificationTime = time.ctime(fileStatsObj[stat.ST_MTIME])
+    st.markdown(git log -1 --format=%cd Bikaner-covid-cases-data.csv)
 
 def data():
     st.markdown("Daily report released from CMHO office Bikaner")
