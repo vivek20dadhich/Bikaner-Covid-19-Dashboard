@@ -6,4 +6,5 @@
 
 -Dashboard Screenshot
 
-![Screenshot (377)](https://user-images.githubusercontent.com/22216569/118272672-97f4aa00-b4e0-11eb-8f06-c33d594d815b.png)
+![Screenshot (442)](https://user-images.githubusercontent.com/22216569/120132362-ddef8480-c1e7-11eb-8660-eee85beb4ce7.png)
+
