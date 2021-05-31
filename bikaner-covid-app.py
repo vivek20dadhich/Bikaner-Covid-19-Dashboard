@@ -29,15 +29,7 @@ def samp():
 def update():
     #fileStatsObj = os.stat ("https://github.com/vivek20dadhich/Bikaner-Covid-19-Dashboard/blob/main/Bikaner-covid-cases-data.csv")
     #modificationTime = time.ctime(fileStatsObj[stat.ST_MTIME])
-    from github import Github
-    g = Github()
-    repo = g.get_repo("https://github.com/vivek20dadhich/Bikaner-Covid-19-Dashboard")
-    #print(repo.name)
-    commits = repo.get_commits(path='https://github.com/vivek20dadhich/Bikaner-Covid-19-Dashboard/blob/main/Bikaner-covid-cases-data.csv')
-    print(commits.totalCount)
-    if commits.totalCount:
-    #print(commits[0].commit.committer.date)
-        st.markdown(commits[0].commit.committer.date)
+    st.markdown(pd.DataFrame({'':df["Date"].iloc[-1:] + '  at 21:00'}))
 
 def data():
     st.markdown("Daily report released from CMHO office Bikaner")
