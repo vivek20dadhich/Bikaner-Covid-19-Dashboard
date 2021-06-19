@@ -2,3 +2,4 @@ numpy==1.20.2
 pandas==1.2.4
 plotly==4.14.3
 streamlit==0.81.1
+gsheetsdb==0.1.13
